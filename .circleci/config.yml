@@ -9,8 +9,7 @@ jobs:
             name: Install Dependencies
             command: |
               lscpu
-              Pkg install wget git proot
-
+             
 workflows:
     version: 2.1
     build:
